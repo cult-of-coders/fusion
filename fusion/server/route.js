@@ -36,6 +36,7 @@ rpcRoutes.route('/__meteor', function(params, req, res, next) {
         let context = {
             userId: null,
             connection: {},
+            unblock() {},
             setUserId(userId) { this.userId = userId }
         };
         if (req.headers['meteor-authorization']) {
