@@ -55,3 +55,4 @@ This is possible because we pass `Accounts._storedLoginToken()` to each request.
 
 This works with `accounts-password`.
 
+## License: MIT
