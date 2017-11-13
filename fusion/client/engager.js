@@ -1,6 +1,8 @@
 import { DDP, LivedataTest } from '../../common/namespace';
 import { call, apply } from './rpc';
 
+let _methods = [];
+
 export function engage() {
     if (Meteor.connection._isDummy) {
         createActualConnection();
@@ -43,6 +45,10 @@ function createActualConnection() {
     });
 
     _mirrorMeteorObject();
+
+    _methods.forEach(config => {
+        Meteor.methods(config);
+    })
 }
 
 export function createDummyConnection() {
@@ -52,7 +58,8 @@ export function createDummyConnection() {
         subscribe() {
             Meteor.isDevelopment && console.warn('You cannot subscribe, the connection is not engaged.');
         },
-        methods() {
+        methods(config) {
+            _methods.push(config);
             Meteor.isDevelopment && console.warn('Does not work with .methods() client-side');
         },
         status() {
