@@ -52,6 +52,10 @@ function createActualConnection() {
 }
 
 export function createDummyConnection() {
+    if (Meteor.connection) {
+        Meteor.connection.disconnect();
+    }
+
     Meteor.connection = {
         _isDummy: true,
         _userId: null,
