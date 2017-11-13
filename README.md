@@ -1,6 +1,6 @@
 # DDP Client - Fusion Mode
 
-This package is an extension to DDP-Client, originally from Meteor with the ability to conditionally start the DDP connection.
+This package is an extension to `ddp-client`, originally from Meteor, with the ability to conditionally start the DDP connection.
 
 Original code: https://github.com/meteor/meteor/tree/devel/packages/ddp-client
 
@@ -29,8 +29,8 @@ DDP.engage(); // establishes WS connection
 DDP.disengage(); // cuts the WS connection
 ```
 
-And for your convenience we also export the Fusion class that lets components request an websocket connection,
-and they can release that connection when no longer needed, and if there is no active "Requester" the websocket connection stops.
+And for your convenience we also export the `Fusion` class that lets components request an websocket connection,
+and they can release that connection when no longer needed, and if there is no active "requesters" the websocket connection stops.
 
 Sample:
 
