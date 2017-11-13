@@ -1,4 +1,5 @@
 import {HTTP} from 'meteor/http';
+import {Meteor} from 'meteor/meteor';
 
 export function getToken() {
     return Accounts._storedLoginToken();
@@ -12,7 +13,7 @@ function apply(method, args, options, callback) {
         // Accounts may not be defined at this stage
     }
 
-    HTTP.post('/__meteor', {
+    HTTP.post(Meteor.absoluteUrl('/__meteor'), {
         content: EJSON.stringify({method, args}),
         headers
     }, function (err, res) {
