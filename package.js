@@ -1,7 +1,8 @@
 Package.describe({
   summary: "Meteor's latency-compensated distributed data client",
-  version: '2.2.0',
-  documentation: null
+  version: '2.3.1',
+  documentation: null,
+  name: 'ddp-client',
 });
 
 Npm.depends({
@@ -27,9 +28,7 @@ Package.onUse(function(api) {
     ['client', 'server']
   );
 
-  api.use([
-      'meteorhacks:picker@1.0.3'
-  ], 'server');
+  api.use(['meteorhacks:picker@1.0.3'], 'server');
 
   api.use('callback-hook', ['client', 'server']);
 
@@ -47,9 +46,7 @@ Package.onUse(function(api) {
   api.export('DDP');
   api.mainModule('fusion/client/client.js', 'client');
 
-  api.addFiles([
-      'fusion/server/index.js'
-  ], 'server');
+  api.addFiles(['fusion/server/index.js'], 'server');
 
   api.mainModule('server/server.js', 'server');
 });
@@ -67,7 +64,7 @@ Package.onTest(function(api) {
     'reactive-var',
     'mongo-id',
     'diff-sequence',
-    'ejson'
+    'ejson',
   ]);
 
   api.addFiles('test/stub_stream.js');
